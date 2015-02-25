@@ -10,34 +10,34 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 
 #. Launch a new Amazon EC2 instance:
 
-	* Step 1: Choose an Amazon Machine Image (AMI): turnkey-lamp-13.0-wheezy-amd64.ebs - ami-9dca6480
-	* Step 2: Choose an Instance Type: t1.micro
+	* Step 1: Choose an Amazon Machine Image (AMI): **turnkey-lamp-13.0-wheezy-amd64.ebs - ami-9dca6480**
+	* Step 2: Choose an Instance Type: **t1.micro**
 	* Step 3: Configure Instance Details: (leave dafaults)
 	* Step 4: Add Storage:
-		* Volume Type: General Porpouse (SSD)
+		* Volume Type: **Magnetic**
 	* Step 5: Tag Instance: (leave dafaults)
 	* Step 6: Configure Security Group: 
-		* Security group name: tkl-lamp-odoo-aws
-		* Description: Security Group for tkl-lamp-odoo-aws
+		* Security group name: **tkl-lamp-odoo-aws**
+		* Description: **Security Group for tkl-lamp-odoo-aws**
 	* Launch the instance:
-		* Select a key pair: tkl-lamp-odoo-aws
+		* Select a key pair: **tkl-lamp-odoo-aws**
 	
 	Related information:
 
-		* Security Groups: **[tkl-lamp-odoo-aws]**
-		* Private Key File: **[tkl-lamp-odoo-aws.pem]**
+		* Security Groups: **tkl-lamp-odoo-aws**
+		* Private Key File: **tkl-lamp-odoo-aws.pem**
 
-	Security Group: [tkl-lamp-odoo-aws] (Inbound)::
+	Security Group: tkl-lamp-odoo-aws (Inbound)::
 
-		Port (Service)   Source
-		-------------------------------------
-		N/A(PING)        0.0.0.0/0  (?)
-		22(SSH)          0.0.0.0/0
-		80(HTTP)         0.0.0.0/0
-		443(HTTPS)       0.0.0.0/0
-		12320(Web Shell) 0.0.0.0/0  (disable)
-		12321(Webmin)    0.0.0.0/0  (disable)
-		12322(Custom)    0.0.0.0/0  (disable)
+		Port (Service)    Source
+		---------------------------------------
+		N/A(PING)         0.0.0.0/0
+		22(SSH)           0.0.0.0/0
+		80(HTTP)          0.0.0.0/0
+		443(HTTPS)        0.0.0.0/0
+		12320(Web Shell)  0.0.0.0/0  (disable)
+		12321(Webmin)     0.0.0.0/0  (disable)
+		12322(PHPMyAdmin) 0.0.0.0/0  (disable)
 
 #. Connect, via SSH, for the first time to the instance and set the passowrds:
 
@@ -113,28 +113,22 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 	* admin (Odoo server - admin_passwd)
 	* openuser (account on PostgreSQL - db_password)
 
-#. Reboot the **tkl-lamp-odoo-aws** instance:
-
-	::
-
-		reboot
-
 #. Update the Security Group:
 
-	Security Group: [tkl-lamp-odoo-aws] (Inbound)::
+	Security Group: tkl-lamp-odoo-aws (Inbound)::
 
-		Port (Service)   Source
-		-------------------------------------
-		N/A(PING)        0.0.0.0/0  (?)
-		22(SSH)          0.0.0.0/0
-		80(HTTP)         0.0.0.0/0
-		443(HTTPS)       0.0.0.0/0
-		8069(Custom)     0.0.0.0/0  (disable)
-		12320(Web Shell) 0.0.0.0/0  (disable)
-		12321(Webmin)    0.0.0.0/0  (disable)
-		12322(Custom)    0.0.0.0/0  (disable)
-		12323(Custom)    0.0.0.0/0  (disable)
-		12325(Custom)    0.0.0.0/0
+		Port (Service)    Source
+		---------------------------------------
+		N/A(PING)         0.0.0.0/0
+		22(SSH)           0.0.0.0/0
+		80(HTTP)          0.0.0.0/0
+		443(HTTPS)        0.0.0.0/0
+		8069(Custom)      0.0.0.0/0  (disable)
+		12320(Web Shell)  0.0.0.0/0  (disable)
+		12321(Webmin)     0.0.0.0/0  (disable)
+		12322(PHPMyAdmin) 0.0.0.0/0  (disable)
+		12323(Custom)     0.0.0.0/0  (disable)
+		12325(Custom)     0.0.0.0/0
 
 #. To stop and start the Odoo server, use the following commands (as root):
 
@@ -143,10 +137,3 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 		/opt/openerp/openerp.init stop
 
 		/opt/openerp/openerp.init start
-
-#. Especial commands:
-
-	::
-
-		git remote add origin https://github.com/CLVsol/tklpatch-lamp-odoo-aws.git
-		git push -u origin master
