@@ -3,15 +3,10 @@ tklpatch-lamp-odoo-aws
 
 This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `TurnKey LAMP <http://www.turnkeylinux.org/lamp>`_ appliance, using the Amazon Web Services (AWS) EC2 infrastructure.
 
-turnkey-lamp-13.0-wheezy-amd64.ebs
-
 #. Create a new Key Pair:
 
-	Key pair name: tkl-lamp-odoo-aws
-
-	Related information:
-
-		- Private Key File: **[tkl-lamp-odoo-aws.pem]**
+	- Key pair name: **tkl-lamp-odoo-aws**
+	- Private Key File: **tkl-lamp-odoo-aws.pem**
 
 #. Launch a new Amazon EC2 instance:
 
@@ -26,6 +21,7 @@ turnkey-lamp-13.0-wheezy-amd64.ebs
 			- Description: Security Group for tkl-lamp-odoo-aws
 		- Launch the instance:
 			- Select a key pair: tkl-lamp-odoo-aws
+	
 	Related information:
 
 		- Security Groups: **[tkl-lamp-odoo-aws]**
