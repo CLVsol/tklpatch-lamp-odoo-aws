@@ -5,8 +5,8 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 
 #. Create a new Key Pair:
 
-	- Key pair name: **tkl-lamp-odoo-aws**
-	- Private Key File: **tkl-lamp-odoo-aws.pem**
+ * Key pair name: **tkl-lamp-odoo-aws**
+ * Private Key File: **tkl-lamp-odoo-aws.pem**
 
 #. Launch a new Amazon EC2 instance:
 
